@@ -5,13 +5,11 @@ import { PhoneType } from './phone-type';
   selector: 'app-enum-iterator',
   template: `
     <p>
-      <label>
-        <select name="phoneType">
-          <option *ngFor="let type of PhoneType.values();">
-            {{type}}
-          </option>
-        </select>
-      </label>
+      <select name="phoneType">
+        <option *ngFor="let type of PhoneType.values();">
+          {{type}}
+        </option>
+      </select>
     </p>
   `,
   styles: []
