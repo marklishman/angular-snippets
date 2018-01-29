@@ -17,7 +17,7 @@ export class ArrayGenComponent {
     return Array(n);
   }
 
-  arrayTwo(n: number) {
+  arrayTwo(n: number): number[] {
     return [...Array(n).keys()];
   }
 
