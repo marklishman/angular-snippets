@@ -11,8 +11,7 @@ import { PhoneType } from './phone-type';
         </option>
       </select>
     </p>
-  `,
-  styles: []
+  `
 })
 export class EnumIteratorComponent {
 
