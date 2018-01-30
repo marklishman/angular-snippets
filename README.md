@@ -1,3 +1,3 @@
 # AngularSnippets
 
-A mixture of working Angular code snippets used on the [lishman.io](http://lishman.io) website.
+A mixture of working Angular code snippets from the [lishman.io](http://lishman.io) website.
