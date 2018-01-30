@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { EnumIteratorComponent } from './examples/enum-iterator.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ArrayGenComponent } from './examples/array-gen.component';
+import { DataAttributeComponent } from './examples/data-attribute.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EnumIteratorComponent,
-    ArrayGenComponent
+    ArrayGenComponent,
+    DataAttributeComponent
   ],
   imports: [
     AppRoutingModule,
