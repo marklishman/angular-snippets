@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
     <section
       #prod
       id="product"
-      [attr.data-catalog-id]="catId"
       data-category="component"
+      [attr.data-catalog-id]="catId"
       [attr.data-color]="color">
       Some Cool Product
     </section>
