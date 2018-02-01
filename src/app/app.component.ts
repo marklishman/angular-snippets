@@ -6,7 +6,8 @@ import { environment } from '../environments/environment';
   template: `
     <div *ngIf="dev">
       <a routerLink="/array-gen" routerLinkActive="disabled">Array Gen</a> |
-      <a routerLink="/enum-iter" routerLinkActive="disabled">Enum Iteration</a>
+      <a routerLink="/enum-iter" routerLinkActive="disabled">Enum Iteration</a> |
+      <a routerLink="/data-att" routerLinkActive="disabled">Data Attribute</a>
     </div>
     <router-outlet></router-outlet>
   `

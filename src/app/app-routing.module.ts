@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/array-gen', pathMatch: 'full'},
   {path: 'array-gen', component: ArrayGenComponent},
   {path: 'enum-iter', component: EnumIteratorComponent},
-  {path: 'data-attribute', component: DataAttributeComponent},
+  {path: 'data-att', component: DataAttributeComponent},
 ];
 
 @NgModule({
