@@ -4,7 +4,7 @@ class TestClass {
   subject$ = new Subject<string>();
   emit$(): void {
     this.subject$.next('some value');
-  };
+  }
 }
 
 describe('Jasmine done', () => {
