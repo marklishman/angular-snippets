@@ -1,17 +1,17 @@
 import { UserHttpService } from './user-http.service';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
-import createSpyObj = jasmine.createSpyObj;
 
 import { asyncData } from './async-utils';
 import * as userFixture from './user-fixture';
+import createSpyObj = jasmine.createSpyObj;
 
 describe('UserHttpService', () => {
 
   let userHttpService: UserHttpService;
   let httpClient: HttpClient;
 
-  describe('getUsers$', () => {
+  describe('getUsers$ synchronously', () => {
 
     beforeEach(() => {
 
@@ -35,22 +35,13 @@ describe('UserHttpService', () => {
   describe('getUsers$ asynchronously', () => {
 
     beforeEach(() => {
-
       httpClient = createSpyObj<HttpClient>({
         'get': asyncData(userFixture.users)
       });
-
-      /* even with this
-        return defer(() => Promise.resolve(data))
-          .pipe(
-            delay(3000)
-          );
-       */
-
       userHttpService = new UserHttpService(httpClient);
     });
 
-    it('should be non-deterministic', () => {
+    it('should pass or fail (non-deterministic)', () => {
       userHttpService.getUsers$()
         .subscribe(
           actual => {
@@ -61,7 +52,7 @@ describe('UserHttpService', () => {
 
     // Technically it is still non-deterministic
     // (in the unlikely event that it took longer than 5 seconds)
-    it('should be deterministic', (done: DoneFn) => {
+    it('should pass (deterministic)', (done: DoneFn) => {
       userHttpService.getUsers$()
         .subscribe(
           actual => {
@@ -69,10 +60,10 @@ describe('UserHttpService', () => {
             done();
           }
         );
-        /* even including a delay in asyncData such as this
+        /* even if a delay is included in asyncData, such as this
           return defer(() => Promise.resolve(data))
             .pipe(
-              delay(3000)
+              delay(2000)
             );
          */
     });

@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 
 class TestClass {
   subject$ = new Subject<string>();
@@ -15,18 +15,18 @@ describe('Jasmine done', () => {
     t = new TestClass();
   });
 
-  it('passes', () => {
+  it('passes (false positive!)', () => {
     t.subject$.subscribe(
       data => expect(data).toBe('some value')
     );
     t.emit$();
   });
 
-  it('still passes! It is a false positive - the expectation is never called', () => {
+  it('still passes! The expectation is never called', () => {
     t.subject$.subscribe(
       data => expect(data).toBe('some value')
     );
-    // t.emit$();
+    // t.emit$(); <----- emit$ is not called
   });
 
   it('Jasmine provides the done() function for asynchronous support', (done: DoneFn) => {
@@ -39,7 +39,7 @@ describe('Jasmine done', () => {
     t.emit$();
   });
 
-  xit('this time it fails (test ignored)', (done: DoneFn) => {
+  xit('this time it fails after 5 seconds', (done: DoneFn) => {
     t.subject$.subscribe(
       data => {
         expect(data).toBe('some value');
