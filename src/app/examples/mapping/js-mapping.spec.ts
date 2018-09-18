@@ -19,6 +19,12 @@ describe('Native JavaScript Object Mapping', () => {
       CompanyData abstract class splits data and behavior
       Properties on Company - hack or feature?
 
+      Reference
+      ---------
+
+      https://github.com/Microsoft/TypeScript/issues/5326
+      https://stackoverflow.com/questions/43055682/relationship-between-a-typescript-class-and-an-interface-with-the-same-name
+
    */
 
   const companyDto = {
