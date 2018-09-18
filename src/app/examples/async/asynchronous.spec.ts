@@ -39,7 +39,7 @@ describe('Jasmine done', () => {
     t.emit$();
   });
 
-  it('this time it fails after 5 seconds', (done: DoneFn) => {
+  xit('this time it fails after 5 seconds', (done: DoneFn) => {
     t.subject$.subscribe(
       data => {
         expect(data).toBe('some value');

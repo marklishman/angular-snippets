@@ -1,7 +1,7 @@
 
-import { UserDto } from './user-dto';
+import { UserDetailsDto } from './user-details-dto';
 
-export const users: UserDto[] = [
+export const users: UserDetailsDto[] = [
   {
     'id': 1,
     'name': 'Leanne Graham',

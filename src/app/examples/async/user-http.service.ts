@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { UserDto } from './user-dto';
+import { UserDetailsDto } from './user-details-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class UserHttpService {
   constructor(private http: HttpClient) {
   }
 
-  getUsers$(): Observable<UserDto[]> {
-    return this.http.get<UserDto[]>(this.Url)
+  getUsers$(): Observable<UserDetailsDto[]> {
+    return this.http.get<UserDetailsDto[]>(this.Url)
       .pipe(
         catchError(this.handleError)
       );
