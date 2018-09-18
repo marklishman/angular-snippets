@@ -1,55 +1,70 @@
 import { CompanyDto } from '../dto/company-dto';
-import { Company } from '../model/company';
-import { CompanyData } from '../model/company-data';
+import { Company, CompanyData } from '../model/company';
 
 describe('Native JavaScript Object Mapping', () => {
-  it('should map a simple object with Object.assign', () => {
 
-    /*
-        - Mapping
-        - Immutable
-        - Behavior
+  /*
+      - Mapping
+      - Immutability
+      - Behavior
 
-        ReadOnly
-        Builder
-        Object.assign
-        Destructuring
+      ReadOnly
+      Builder
+      Object.assign
+      Destructuring
 
-     */
+      Notes
+      -----
+      CompanyData interface duplicates properties
+      CompanyData abstract class splits data and behavior
+      Properties on Company - hack or feature?
 
-    const companyDto = {
-      name: 'the name',
-      catchPhrase: 'the catch phrase',
-      bs: 'the bs'
-    } as CompanyDto;
+   */
+
+  const companyDto = {
+    name: 'the name',
+    catchPhrase: 'the catch phrase',
+    bs: 'the bs'
+  } as CompanyDto;
+
+  it('should lose the function', () => {
 
     // this looses details() method
-    const companyData = {
+    const companyDataOnly = {
       name: companyDto.name,
       catchPhrase: companyDto.catchPhrase,
       info: companyDto.bs
     } as Company;
 
-    const companyObject = new Company(
-      {} as CompanyData
+    expect(companyDataOnly.details).toBeUndefined();
+  });
+
+  it('should allow parameters to be specified individually', () => {
+    const company = new Company(
+      {
+        name: companyDto.name,
+        catchPhrase: companyDto.catchPhrase,
+        info: companyDto.bs
+      }
     );
 
-    // remove 'bs'
-    const {bs, ...keep} = companyDto;
+    expect(company.details).toBe('Company: the name, the catch phrase, the bs');
+  });
+
+  it('should allow mapping', () => {
+
+    // remove 'bs' and 'extra'
+    const {bs, extra, ...keep} = companyDto;
 
     // map 'bs' to 'info'
     const rename = {info: companyDto.bs};
 
-    const companyParams = Object.assign(
-      {},
-      keep,
-      rename
-      ) as CompanyData;
+    const companyData = Object.assign({} as CompanyData, keep, rename);
 
-    const company = new Company(companyParams);
+    const company = new Company(companyData);
 
-    console.log(company);
-    console.log(company.details);
+    expect(company.details).toBe('Company: the name, the catch phrase, the bs');
+
 
     // company.info = 'readonly?';
 
